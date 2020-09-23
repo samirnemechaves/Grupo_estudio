@@ -148,3 +148,44 @@ mysummary2.df
 #Single Variable Visualization
 #Histograms
 hist(store.df$p1sales)
+
+#We add the title and axis labels to our plot command:
+hist(store.df$p1sales, 
+main=" Product 1 Weekly Sales Frequencies, All Stores",
+xlab=" Product 1 Sales ( Units)",
+ylab="Count",
+breaks=30, # more columns
+col="lightblue") # color the bars
+#mejoremos la grafica
+hist(store.df$p1sales, 
+main="Product 1 Weekly Sales Frequencies, All Stores",
+xlab="Product 1 Sales (Units)",
+ylab="Relative frequency",             # it's no londer the count!
+breaks=30,                            #more columns    
+col="lightblue", 
+freq=FALSE,                            # freq=FALSE significa no contar para trazar la densidad
+xaxt="n")                              # xaxt="n" no marcas de graduación del eje x
+axis(side=1, at=seq(60, 300, by=20))        # añadir las marcas de graduación del eje x (lado 1) que queremos
+lines(density(store.df$p1sales, bw=10),    # "bw= ..." ajusta el suavizado
+type="l", col="darkred", lwd=2)      # lwd = anchura de la línea
+
+#producto 2
+#We add the title and axis labels to our plot command:
+hist(store.df$p2sales, 
+     main=" Product 2 Weekly Sales Frequencies, All Stores",
+     xlab=" Product 2 Sales ( Units)",
+     ylab="Count",
+     breaks=30, # more columns
+     col="lightblue") # color the bars
+#mejoremos la grafica
+hist(store.df$p2sales, 
+     main="Product 2 Weekly Sales Frequencies, All Stores",
+     xlab="Product 2 Sales (Units)",
+     ylab="Relative frequency",             # it's no londer the count!
+     breaks=30,                             # more columns
+     col="lightblue",                       #color de llenado
+     freq=FALSE,                            # freq=FALSE significa no contar para trazar la densidad
+     xaxt="n")                              # xaxt="n" no marcas de graduación del eje x
+axis(side=1, at=seq(60, 300, by=20))        # añadir las marcas de graduación del eje x (lado 1) que queremos
+lines(density(store.df$p2sales, bw=10),    # "bw= ..." ajusta el suavizado
+      type="l", col="darkred", lwd=2)      # lwd = anchura de la línea
